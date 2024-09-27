@@ -1,17 +1,21 @@
+# Este codigo es para sacar palabras directamente: 
+
 import requests
 from bs4 import BeautifulSoup
 
-url = 'http://www.soria-goig.org/fuentesymanantialesdesoria/ftes0015.htm'
+for num in range(15,30):
 
-response = requests.get(url)
+    url = f'http://www.soria-goig.org/fuentesymanantialesdesoria/ftes00{num}.htm'
 
-if response.status_code == 200:
+    response = requests.get(url)
 
-    soup = BeautifulSoup(response.text, 'html.parser')
-    word = 'pintura'
+    if response.status_code == 200:
 
-    if word in soup.get_text().lower():
-        print(f'Se encuentra la palabra {word} en la url {url}')
+        soup = BeautifulSoup(response.text, 'html.parser')
+        word = 'habilitado'
 
-else:
-    print('Error , no se puede acceder a la página')        
+        if word in soup.get_text().lower():
+            print(f'Se encuentra la palabra {word} en la url {url}')
+
+    else:
+        print('Error , no se puede acceder a la página')        
